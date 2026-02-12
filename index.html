@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>baruchito.com - A Hamster Family Blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --warm-cream: #fff8f0;
+            --soft-orange: #ff9a56;
+            --soft-pink: #ffb3ba;
+            --pastel-yellow: #ffe6a7;
+            --light-brown: #c4956a;
+            --text-brown: #5c3d2e;
+            --text-light: #7a5a4a;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--warm-cream);
+            color: var(--text-brown);
+        }
+
+        /* Decorative top border */
+        .top-border {
+            height: 6px;
+            background: linear-gradient(90deg, var(--soft-pink), var(--soft-orange), var(--pastel-yellow), var(--soft-pink));
+        }
+
+        /* Hero section */
+        .hero {
+            background: linear-gradient(135deg, #fff3e6 0%, #ffe8d6 100%);
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--soft-orange);
+            margin-bottom: 0.3rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .paw-divider {
+            font-size: 1.4rem;
+            letter-spacing: 0.8rem;
+            color: var(--soft-orange);
+            opacity: 0.5;
+            margin: 1.5rem 0;
+        }
+
+        /* Story section */
+        .story {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2.5rem 1rem;
+        }
+
+        .story p {
+            font-size: 1.08rem;
+            line-height: 1.85;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .story .greeting {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-brown);
+        }
+
+        .hamster-names {
+            font-weight: 700;
+            color: var(--soft-orange);
+        }
+
+        /* Family section */
+        .family-section {
+            background: linear-gradient(135deg, #fff3e6 0%, #ffe8d6 100%);
+            padding: 2.5rem 0;
+        }
+
+        .family-section h2 {
+            font-weight: 800;
+            color: var(--soft-orange);
+            text-align: center;
+            margin-bottom: 0.3rem;
+        }
+
+        .family-section .section-sub {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .family-card {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .family-card .name {
+            font-weight: 700;
+            color: var(--text-brown);
+            font-size: 1.05rem;
+            margin-top: 0.5rem;
+        }
+
+        .family-card .detail {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .family-card .dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--soft-orange);
+            margin: 0 0.25rem;
+            vertical-align: middle;
+            opacity: 0.5;
+        }
+
+        /* Photo grid */
+        .gallery-section {
+            padding: 2.5rem 0;
+        }
+
+        .gallery-section h2 {
+            font-weight: 800;
+            color: var(--soft-orange);
+            text-align: center;
+            margin-bottom: 0.3rem;
+        }
+
+        .gallery-section .section-sub {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .gallery-item {
+            margin-bottom: 1.2rem;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 3px 15px rgba(92, 61, 46, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(92, 61, 46, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Archive notice */
+        .archive-notice {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            box-shadow: 0 3px 15px rgba(92, 61, 46, 0.08);
+        }
+
+        .archive-notice p {
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .archive-notice a {
+            color: var(--soft-orange);
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .archive-notice a:hover {
+            border-bottom-color: var(--soft-orange);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #fff3e6 0%, #ffe8d6 100%);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--soft-orange);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-border"></div>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="container">
+        <h1>baruchito.com</h1>
+        <p class="subtitle">The Official Blog of Seven Very Important Hamsters</p>
+        <div class="paw-divider">. . . . .</div>
+    </div>
+</section>
+
+<!-- Story -->
+<section class="story">
+    <p class="greeting">Hello, dear visitor!</p>
+
+    <p>
+        If you've found your way here, you probably remember us. We're
+        <span class="hamster-names">Baru, Julia, Flan, Nana, Oscar, Luna,</span> and
+        <span class="hamster-names">Cleo</span> &mdash; a family of hamsters who lived in
+        Tokyo, Japan between 2003 and 2008.
+    </p>
+
+    <p>
+        Our human, Javi, set up this blog so we could share our daily adventures with the
+        world. We wrote about napping in tissue-paper nests, stuffing our cheeks with
+        sunflower seeds, racing on our wheels at 3 a.m., and all the other very important
+        things that hamsters do.
+    </p>
+
+    <p>
+        Baru was the first to arrive, a brave little golden boy. Julia came next &mdash;
+        she was sweet and gentle. Then came Flan, who fell in love with Baru, and together
+        they had five babies: <span class="hamster-names">Nana, Coco, Poteto, Haru,</span>
+        and <span class="hamster-names">Hana</span>. Most of the little ones went to live
+        with other families, but Nana stayed with us. Oscar was our one Djungarian hamster
+        &mdash; tiny, round, and full of mischief. Luna and Cleo joined the family later
+        and kept the tradition going until 2008.
+    </p>
+
+    <p>
+        We've all crossed the Rainbow Bridge now, but we had wonderful lives full of
+        treats, warm beds, and a human who loved us very much. This blog was our little
+        corner of the internet, and even though we can't post anymore, we're happy
+        that people still remember us.
+    </p>
+</section>
+
+<!-- Hamster Family -->
+<section class="family-section">
+    <div class="container">
+        <h2>The Family</h2>
+        <p class="section-sub">Seven hamsters, one big adventure</p>
+
+        <div class="row justify-content-center">
+            <div class="col-6 col-sm-4 col-md-3 family-card">
+                <div class="name">Baru</div>
+                <div class="detail">Syrian <span class="dot"></span> Boy</div>
+                <div class="detail">2003 &ndash; 2006</div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 family-card">
+                <div class="name">Julia</div>
+                <div class="detail">Syrian <span class="dot"></span> Girl</div>
+                <div class="detail">2003 &ndash; 2004</div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 family-card">
+                <div class="name">Flan</div>
+                <div class="detail">Syrian <span class="dot"></span> Girl</div>
+                <div class="detail">2004 &ndash; 2006</div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 family-card">
+                <div class="name">Nana</div>
+                <div class="detail">Syrian <span class="dot"></span> Girl</div>
+                <div class="detail">2004 &ndash; 2006</div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 family-card">
+                <div class="name">Oscar</div>
+                <div class="detail">Djungarian <span class="dot"></span> Boy</div>
+                <div class="detail">2005 &ndash; 2007</div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 family-card">
+                <div class="name">Luna</div>
+                <div class="detail">Syrian <span class="dot"></span> Girl</div>
+                <div class="detail">2006 &ndash; 2008</div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 family-card">
+                <div class="name">Cleo</div>
+                <div class="detail">Syrian <span class="dot"></span> Girl</div>
+                <div class="detail">2007 &ndash; 2008</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Photo Gallery -->
+<section class="gallery-section">
+    <div class="container">
+        <h2>Memories</h2>
+        <p class="section-sub">Some of our favorite moments</p>
+
+        <div class="row g-3">
+            <div class="col-6 col-md-4">
+                <div class="gallery-item">
+                    <img src="img/watermelon.jpg" alt="Hamster enjoying a piece of watermelon">
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="gallery-item">
+                    <img src="img/wheel-pose.jpg" alt="Hamster posing in an exercise wheel">
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="gallery-item">
+                    <img src="img/peeking-tube.jpg" alt="Hamster peeking through a purple tube">
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="gallery-item">
+                    <img src="img/snacking.jpg" alt="Hamster snacking in a turquoise container">
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="gallery-item">
+                    <img src="img/coconut-house.jpg" alt="Hamster hiding in a coconut shell house">
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="gallery-item">
+                    <img src="img/desk-explorer.jpg" alt="Hamster exploring the desk">
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="gallery-item">
+                    <img src="img/eating-corn.jpg" alt="Hamster eating corn in its cozy nest">
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="gallery-item">
+                    <img src="img/exercise-wheels.jpg" alt="Two hamsters on their exercise wheels">
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="gallery-item">
+                    <img src="img/strawberry.jpg" alt="Hamster eating a strawberry">
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="gallery-item">
+                    <img src="img/held-together.jpg" alt="Two hamsters being held together">
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="gallery-item">
+                    <img src="img/three-in-box.jpg" alt="Three hamsters crowded in a cozy box">
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="gallery-item">
+                    <img src="img/treat-time.jpg" alt="Hamster taking a treat from a hand">
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="gallery-item">
+                    <img src="img/babies-sleeping.jpg" alt="Baby hamsters sleeping together">
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="gallery-item">
+                    <img src="img/being-petted.jpg" alt="Hamsters being petted by their human">
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="gallery-item">
+                    <img src="img/coconut-peek.jpg" alt="Hamster peeking out of a coconut shell">
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="gallery-item">
+                    <img src="img/desk-adventure.jpg" alt="Hamster on a desk adventure">
+                </div>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="gallery-item">
+                    <img src="img/cozy-nest.jpg" alt="Hamster sleeping in a cozy tissue nest">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Archive Notice -->
+<section class="py-4">
+    <div class="container">
+        <div class="archive-notice">
+            <p>Our old blog posts are still available on the Internet Archive.</p>
+            <p>
+                <a href="https://web.archive.org/web/*/www.baruchito.com">
+                    Visit the archived baruchito.com
+                </a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <p>
+            Javi's current site is <a href="https://lavandeira.net">lavandeira.net</a>
+            &mdash; he writes about tech, travel, and life in Japan.
+        </p>
+        <p class="mt-2" style="font-size: 0.8rem; opacity: 0.6;">
+            In loving memory of seven little furballs who made the world a better place.
+        </p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
